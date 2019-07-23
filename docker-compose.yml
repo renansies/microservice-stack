@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  mongo: 
+    image: mongo
+    restart: always
+    ports:
+     - 27017:27017
+
+  rabbit: 
+    image: rabbitmq:3.7-management
+    ports:
+     - 5672:5672
+     - 15672:15672
+     
+  eureka: 
+    image: springcloud/eureka
+    ports:
+     - 8761:8761
+      
+  mongo-client:
+    image: mongoclient/mongoclient
+    ports:
+     - 3000:3000
+    
+  redis:
+    image: redis
+    ports:
+     - 6379:6379
+
+  castle-mock:
+    image: castlemock/castlemock
+    ports:
+     - 4000:8080
+     
+  elk:
+    image: sebp/elk
+    ports:
+     - 5601:5601
+     - 9200:9200
+     - 5044:5044
